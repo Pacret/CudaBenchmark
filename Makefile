@@ -17,8 +17,6 @@ SRCS		= srcs/main.cu \
 			 srcs/Bench/GPU/Sobel/GpuSobel.cu
 
 
-
-
 CXX		= nvcc
 
 CXXFLAGS	= --std c++17 -O3

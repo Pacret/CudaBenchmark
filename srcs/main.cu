@@ -94,7 +94,7 @@ int main()
 
     std::vector<Bench *> benchs;
 
-    for (int i = 4096; i <= 4096; i+=64)
+    for (int i = 64; i <= 4096; i+=64)
     {
         std::cout << i << " x " << i << " = " << i*i << ", ";
         benchs.push_back(new GpuBinarizeMemcopyNotCount("GPU Binarize memcopy not count", i, i));
@@ -110,21 +110,21 @@ int main()
     std::cout << std::endl;
 
 
-    for (auto it = benchs.crbegin(); it != benchs.crend(); ++it)
-    {
-        int imageSize = (*(it))->xSize * (*(it))->ySize; 
-        auto before = system_clock::now();
-        for (int i = 0; i < imageSize; i++)
-        {
-            (*(it))->image8bits[i] = rand() % 256;
-        }
-        millisec t = std::chrono::system_clock::now() - before;
-        std::cout << "acces to value " << (*it)->name << " after calcul take : " << t.count() << " ms" << std::endl;
-    }
+    // for (auto it = benchs.crbegin(); it != benchs.crend(); ++it)
+    // {
+    //     int imageSize = (*(it))->xSize * (*(it))->ySize;
+    //     auto before = system_clock::now();
+    //     for (int i = 0; i < imageSize; i++)
+    //     {
+    //         (*(it))->image8bits[i] = rand() % 256;
+    //     }
+    //     millisec t = std::chrono::system_clock::now() - before;
+    //     std::cout << "acces to value " << (*it)->name << " after calcul take : " << t.count() << " ms" << std::endl;
+    // }
 
 
     // benchs.push_back(new CpuErosion("CPU Erosion", xSize, ySize));
-    
+
     displayCsv(benchs, 9);
     //displayConsole(benchs);
 

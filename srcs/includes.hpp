@@ -15,7 +15,7 @@
 
 #include <time.h>
 
-#define N_BENCHMARK 4
+#define N_BENCHMARK 20
 
 
 #define BINARIZE_SEUIL 50
